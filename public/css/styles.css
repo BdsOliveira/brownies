@@ -1,0 +1,139 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+
+  /******** MOBILE ********/
+
+  /**** Title ****/
+  .title {
+    text-align: left;
+    font-size: 150%;
+    background-color: #04AA6D;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    color: #fff;
+  }
+
+  .content {
+    margin-top: -30px;
+    margin-bottom: 80px;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    background-color: #ececec;
+    height: 70vh;
+    padding: 20px;
+  }
+
+  table {
+    visibility: visible;
+    margin-top: 20px;
+    border: solid black 0px;
+    width: 98%;
+    border-spacing: 0px;
+  }
+
+  th {
+    background-color: #ccc;
+    padding: 5px 8px;
+    border: solid black 0px;
+  }
+
+  td {
+    padding: 1px 8px;
+    border: solid black 0px;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+    justify-content: center;
+  }
+
+  .iten-action {
+    display: flex;
+    flex-direction: column;
+    background-color: #04AA6D;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    min-width: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fa-solid {
+    font-size: 2rem;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .field {
+    width: 95%;
+    height: 40px;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  .submit {
+    margin-top: 20px;
+    width: 98%;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #04AA6D;
+    color: #fff;
+    padding: 10px;
+    border-radius: 30px;
+  }
+
+  /**** Menu ****/
+  .icon-bar {
+    width: 100%;
+    /* Full-width */
+    background-color: #555;
+    /* Dark-grey background */
+    overflow: auto;
+    /* Overflow due to float */
+    position: fixed;
+    bottom: 0;
+  }
+
+  .icon-bar a {
+    float: left;
+    /* Float links side by side */
+    text-align: center;
+    /* Center-align text */
+    width: 33%;
+    /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0;
+    /* Some top and bottom padding */
+    transition: all 0.3s ease;
+    /* Add transition for hover effects */
+    color: white;
+    /* White text color */
+    font-size: 36px;
+    /* Increased font size */
+  }
+
+  .icon-bar a:hover {
+    background-color: #000;
+    /* Add a hover color */
+  }
+
+  .active {
+    background-color: #04AA6D;
+    /* Add an active/current color */
+  }
+
+  .submit:hover {
+    cursor: pointer;
+  }
