@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\HTTP\Controllers\SellerController;
+use App\HTTP\Controllers\CompanyController;
 
 Route::get('/', function () {
     return view('index');
@@ -30,3 +31,7 @@ Route::get('/report', function () {
 Route::get('/sellers', [SellerController::class, 'sellers']);
 
 Route::get('/sellers/create', [SellerController::class, 'createSeller']);
+
+Route::get('/company', [CompanyController::class, 'company']);
+
+Route::get('/company/create', [CompanyController::class, 'createCompany']);

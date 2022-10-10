@@ -26,7 +26,7 @@
             <a href="sellers">
                 <div class="iten-action">
                     <i class="fa-solid fa-chart-column"></i>
-                    Gerenciar Vendedores
+                    Gerenciar Pessoas
                 </div>
             </a>
         </div>
