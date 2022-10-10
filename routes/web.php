@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\HTTP\Controllers\SellerController;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -25,10 +27,6 @@ Route::get('/report', function () {
     return view('report');
 });
 
-Route::get('/sellers', function () {
-    return view('/sellers/sellers');
-});
+Route::get('/sellers', [SellerController::class, 'sellers']);
 
-Route::get('/sellers/create', function () {
-    return view('/sellers/create-seller');
-});
+Route::get('/sellers/create', [SellerController::class, 'createSeller']);

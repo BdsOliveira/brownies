@@ -16,6 +16,12 @@
                     Cadastrar vendedor
                 </div>
             </a>
+            <a href="company/create">
+                <div class="iten-action">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Cadastrar Empresa
+                </div>
+            </a>
         </div>
         Exibir a lista de vendedores com os botões de editar e excluir
     </section>
