@@ -15,4 +15,11 @@ class CompanyController extends Controller
     public function createCompany () {
         return view('/company/create-company');
     }
+
+    public function store (Request $request){
+        $company = new Company;
+        $company->fill($request->all());
+        $company->save();
+        return redirect('/');
+    }
 }

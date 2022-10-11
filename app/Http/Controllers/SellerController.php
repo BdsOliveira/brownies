@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Seller;
+use App\Models\Company;
 
 class SellerController extends Controller
 {
@@ -13,6 +14,19 @@ class SellerController extends Controller
     }
 
     public function createSeller () {
-        return view('/sellers/create-seller');
+        $companies = Company::all();
+        return view('/sellers/create-seller', ['companies' => $companies]);
+    }
+
+    public function store (Request $request){
+        $seller = new Seller;
+
+        // $seller->nameSeller = $request->nameSeller;
+        // $seller->id_company = $request->nameCompany;
+
+        $seller->fill($request->all());
+        $seller->save();
+
+        return redirect('/sellers');
     }
 }

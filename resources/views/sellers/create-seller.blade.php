@@ -10,7 +10,26 @@
 
     <section class="content">
         <div class="actions">
-            Formulário de cadastro do vendedor
+        </div>
+        <div id="seller-create-container" class="col-md-6 offset-md-3">
+            <form action="/sellers" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="nameSeller">Vendedor:</label>
+                    <input type="text" name="nameSeller" id="nameSeller" class="form-control"
+                        placeholder="Nome do vendedor...">
+                </div>
+                <div class="form-group">
+                    <label for="id_company">Empresa:</label>
+                    <select name="id_company" id="id_company" class="form-control">
+                        @foreach ($companies as $company)
+                            <option value="{{ $company->id }}">{{ $company->companyName }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Cadastrar Vendedor">
+            </form>
         </div>
     </section>
+
 @endsection

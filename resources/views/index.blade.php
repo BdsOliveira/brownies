@@ -11,7 +11,7 @@
 
     <section class="content">
         <div class="actions">
-            <a href="/create-sell">
+            <a href="/create-order">
                 <div class="iten-action">
                     <i class="fa-solid fa-circle-plus"></i>
                     Cadastrar venda

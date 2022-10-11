@@ -15,4 +15,6 @@ class Seller extends Model
     // {
     //     return $this->belongsTo(Company::class);
     // }
+
+    protected $fillable = ['nameSeller', 'id_company'];
 }

@@ -23,7 +23,25 @@
                 </div>
             </a>
         </div>
-        <p>{{ $sellers }}</p>
+        <table>
+            <thead>Vendedores Cadastradas</thead>
+            <tbody>
+                <tr>
+                    <td>Nome do Vendedor</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach ($sellers as $seller)
+                    <tr>
+                        <td>
+                            <p>{{ $seller->nameSeller }}</p>
+                        </td>
+                        <td>Editar</td>
+                        <td>Excluir</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </section>
 
 @endsection

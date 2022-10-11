@@ -15,4 +15,5 @@ class Company extends Model
     // {
     //     return $this->hasMany(Seller::class);
     // }
+    protected $fillable = ['companyName'];
 }
