@@ -28,7 +28,7 @@
             <label for="sellDate">Data da venda:</label><br>
             <input class="field" type="date" name="sellDate" id="sellDate"><br>
 
-            <input class="submit" type="submit" value="Cadastrar"></input>
+            <input class="submit" type="submit" value="Cadastrar">
         </form>
     </section>
 @endsection

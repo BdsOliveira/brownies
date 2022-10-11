@@ -13,5 +13,4 @@ class OrderController extends Controller
         $sellers = Seller::all();
         return view('/orders/create-order', ['companies' => $companies, 'sellers' => $sellers]);
     }
-
 }
