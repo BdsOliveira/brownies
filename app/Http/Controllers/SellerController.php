@@ -27,6 +27,6 @@ class SellerController extends Controller
         $seller->fill($request->all());
         $seller->save();
 
-        return redirect('/sellers');
+        return redirect('/sellers')->with('msg', 'Vendedor cadastrado com sucesso!');;
     }
 }

@@ -10,10 +10,11 @@
     </div>
     <section class="content">
         <form id="formCreateSell" method="POST">
-            <label for="nameSeller">Nome do Vendedor:</label><br>
-            <select class="field" name="nameSeller" id="nameSeller">
+            @csrf
+            <label for="id_seller">Nome do Vendedor:</label><br>
+            <select class="field" name="id_seller" id="id_seller">
                 @foreach ($sellers as $seller)
-                    <option value="{{ $seller->nameSeller }}">{{ $seller->nameSeller }}</option>
+                    <option value="{{ $seller->id }}">{{ $seller->nameSeller }}</option>
                 @endforeach
             </select><br>
 
@@ -25,8 +26,8 @@
             </select><br>
             <label for="quantitySold">Quantidade vendida:</label><br>
             <input class="field" type="number" name="quantitySold" id="quantitySold"><br>
-            <label for="sellDate">Data da venda:</label><br>
-            <input class="field" type="date" name="sellDate" id="sellDate"><br>
+            <label for="dateSell">Data da venda:</label><br>
+            <input class="field" type="date" name="dateSell" id="dateSell"><br>
 
             <input class="submit" type="submit" value="Cadastrar">
         </form>

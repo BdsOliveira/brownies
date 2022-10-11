@@ -32,6 +32,12 @@
             <a href="report"><i class="fa-solid fa-chart-column"></i></a>
         </div>
     </menu>
+
+    @if (session('msg'))
+        <div class="alert alert-success">
+            <p>{{ session('msg') }}</p>
+        </div>
+    @endif
     @yield('content')
 </body>
 

@@ -20,6 +20,6 @@ class CompanyController extends Controller
         $company = new Company;
         $company->fill($request->all());
         $company->save();
-        return redirect('/');
+        return redirect('/')->with('msg', 'Empresa cadastrada com sucesso!');;
     }
 }

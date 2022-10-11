@@ -26,6 +26,7 @@ Route::get('/report', function () {
 });
 
 Route::get('/create-order', [OrderController::class, 'orders']);
+Route::post('/create-order', [OrderController::class, 'store']);
 
 Route::get('/sellers', [SellerController::class, 'sellers']);
 Route::post('/sellers', [SellerController::class, 'store']);
