@@ -23,7 +23,7 @@
                 </div>
             </a>
         </div>
-        Exibir a lista de vendedores com os botões de editar e excluir
+        <p>{{ $sellers }}</p>
     </section>
 
 @endsection

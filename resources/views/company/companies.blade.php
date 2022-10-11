@@ -23,7 +23,7 @@
                 </div>
             </a>
         </div>
-        Exibir a lista de empresas com os botões de editar e excluir
+        <p>{{ $companies }}</p>
     </section>
 
 @endsection

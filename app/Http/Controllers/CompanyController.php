@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Company;
 
 class CompanyController extends Controller
 {
     public function company () {
-        return view('company/companies');
+        $companies = Company::all();
+        return view('company/companies', ['companies' => $companies]);
     }
 
     public function createCompany () {
