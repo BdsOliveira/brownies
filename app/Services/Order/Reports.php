@@ -13,7 +13,7 @@ class Reports
 
     public function reportFromDays(CarbonInterface $beginDate, CarbonInterface $endDate)
     {
-        return Order::whereBetween('dateSell', [$beginDate->format('Y-m-d'), $endDate->format('Y-m-d')])
+        return Order::with(['seller'])->whereBetween('dateSell', [$beginDate->format('Y-m-d'), $endDate->format('Y-m-d')])
             ->latest()
             ->get();
     }

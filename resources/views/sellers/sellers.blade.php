@@ -5,7 +5,6 @@
 @section('content')
     <div class="head">
         <h1 class="">Vendedores&nbsp;<span id="cash"></span></h1>
-
     </div>
 
     <section class="content">
@@ -24,20 +23,17 @@
             </a>
         </div>
         <table>
-            <thead>Vendedores Cadastradas</thead>
+            <thead align="center">Vendedores Cadastradas</thead>
             <tbody>
                 <tr>
-                    <td>Nome do Vendedor</td>
-                    <td></td>
-                    <td></td>
+                    <td align="center" colspan="2">Nome do Vendedor</td>
                 </tr>
                 @foreach ($sellers as $seller)
                     <tr>
-                        <td>
-                            <p>{{ $seller->nameSeller }}</p>
+                        <td align="right">
+                            {{ $seller->nameSeller }}
                         </td>
-                        <td>Editar</td>
-                        <td>Excluir</td>
+                        <td>Editar Exluir</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -8,21 +8,21 @@ use App\Models\Company;
 
 class SellerController extends Controller
 {
-    public function sellers () {
+    public function sellers()
+    {
         $sellers = Seller::all();
         return view('sellers/sellers', ['sellers' => $sellers]);
     }
 
-    public function createSeller () {
+    public function createSeller()
+    {
         $companies = Company::all();
         return view('/sellers/create-seller', ['companies' => $companies]);
     }
 
-    public function store (Request $request){
+    public function store(Request $request)
+    {
         $seller = new Seller;
-
-        // $seller->nameSeller = $request->nameSeller;
-        // $seller->id_company = $request->nameCompany;
 
         $seller->fill($request->all());
         $seller->save();

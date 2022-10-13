@@ -9,13 +9,15 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function orders(){
+    public function orders()
+    {
         $companies = Company::all();
         $sellers = Seller::all();
         return view('/orders/create-order', ['companies' => $companies, 'sellers' => $sellers]);
     }
 
-    public function store (Request $request) {
+    public function store(Request $request)
+    {
         $order = new Order;
         $order->fill($request->all());
         $order->save();

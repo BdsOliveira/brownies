@@ -18,23 +18,29 @@ use App\HTTP\Controllers\CompanyController;
 use App\HTTP\Controllers\OrderController;
 use App\HTTP\Controllers\ReportController;
 
-// Route::get('/', function () {
-//     return view('index');
-//     // Add a rota para o ReportController e retorna a view Index com a função de relatório sendo executada
-// });
+Route::get('/', [ReportController::class, 'index'])->middleware('auth');
+Route::get('/report', [ReportController::class, 'report'])->middleware('auth');
+Route::post('/report', [ReportController::class, 'reportFromDate'])->middleware('auth');
 
-Route::get('/', [ReportController::class, 'index']);
-Route::get('/report', [ReportController::class, 'report']);
+Route::get('/create-order', [OrderController::class, 'orders'])->middleware('auth');
+Route::post('/create-order', [OrderController::class, 'store'])->middleware('auth');
 
-Route::get('/create-order', [OrderController::class, 'orders']);
-Route::post('/create-order', [OrderController::class, 'store']);
+Route::get('/sellers', [SellerController::class, 'sellers'])->middleware('auth');
+Route::post('/sellers', [SellerController::class, 'store'])->middleware('auth');
 
-Route::get('/sellers', [SellerController::class, 'sellers']);
-Route::post('/sellers', [SellerController::class, 'store']);
+Route::get('/sellers/create', [SellerController::class, 'createSeller'])->middleware('auth');
 
-Route::get('/sellers/create', [SellerController::class, 'createSeller']);
+Route::get('/company', [CompanyController::class, 'company'])->middleware('auth');
+Route::post('/company', [CompanyController::class, 'store'])->middleware('auth');
 
-Route::get('/company', [CompanyController::class, 'company']);
-Route::post('/company', [CompanyController::class, 'store']);
+Route::get('/company/create', [CompanyController::class, 'createCompany'])->middleware('auth');
 
-Route::get('/company/create', [CompanyController::class, 'createCompany']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

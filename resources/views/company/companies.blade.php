@@ -31,8 +31,7 @@
                         <td>
                             <p>{{ $company->companyName }}</p>
                         </td>
-                        <td>Editar</td>
-                        <td>Excluir</td>
+                        <td>Editar Excluir</td>
                     </tr>
                 @endforeach
             </tbody>
