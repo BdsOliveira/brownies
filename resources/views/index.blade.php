@@ -5,7 +5,7 @@
 @section('content')
     <div class="head">
         <p>Faturamento<br>Últimos 30 dias</p>
-        <h1 class="">R$&nbsp;<span id="cash"></span></h1>
+        <h1 class="">R$&nbsp;<span id="cash">{{ $payload['faturamento'] }},00</span></h1>
 
     </div>
 

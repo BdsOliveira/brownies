@@ -16,14 +16,15 @@ use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\SellerController;
 use App\HTTP\Controllers\CompanyController;
 use App\HTTP\Controllers\OrderController;
+use App\HTTP\Controllers\ReportController;
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+//     // Add a rota para o ReportController e retorna a view Index com a função de relatório sendo executada
+// });
 
-Route::get('/report', function () {
-    return view('report');
-});
+Route::get('/', [ReportController::class, 'index']);
+Route::get('/report', [ReportController::class, 'report']);
 
 Route::get('/create-order', [OrderController::class, 'orders']);
 Route::post('/create-order', [OrderController::class, 'store']);

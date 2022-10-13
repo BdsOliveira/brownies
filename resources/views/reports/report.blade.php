@@ -5,14 +5,16 @@
 @section('content')
     <div class="head">
         <p>Faturamento<br>Últimos 7 dias</p>
-        <h1>R$&nbsp;<span id="cash"></span></h1>
+        <h1>R$&nbsp;<span id="cash">{{ $payload['faturamento'] }},00</span></h1>
 
     </div>
 
     <section class="content">
-        <input type="date" id="beginDate">
-        <input type="date" id="endDate">
-        <input class="submit" type="button" onclick="printReport()" value="Consultar"></input>
+        <form action="/" method="POST">
+            <input type="date" id="beginDate" name="beginDate">
+            <input type="date" id="endDate" name="endDate">
+            <input class="submit" type="submit" value="Consultar">
+        </form>
 
         <div class="report" id="iReport">
             <table id="iTable">
