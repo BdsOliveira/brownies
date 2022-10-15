@@ -18,22 +18,22 @@
         </form>
 
         <div class="report" id="iReport">
-            <table id="iTable">
+            <table class="table table-hover table-sm">
                 <thead>
-                    <tr>
-                        <td colspan="4">
-                            Relatório dos ultimos 7 dias
-                        </td>
+                    <tr class="nav justify-content-center">
+                        <th class="nav-item">
+                            RELÁTÓRIO DOS ÚLTIMOS 7 DIAS - DETALHADO
+                        </th>
                     </tr>
                     <tr>
-                        <th>Vendedor</th>
-                        <th>Total Vendido</th>
-                        <th>Data</th>
-                        <th>Comissão</th>
-                        <th align="center">Ações</th>
+                        <th spoce="row">Vendedor</th>
+                        <th spoce="row">Total Vendido</th>
+                        <th spoce="row">Data</th>
+                        <th spoce="row">Comissão</th>
+                        <th spoce="row">Ações</th>
                     </tr>
                 </thead>
-                <tbody id="tableBody">
+                <tbody>
                     <?php
                     $totalSells = 0;
                     $totalComissions = 0;
@@ -44,7 +44,12 @@
                             <td> R$ {{ $result->quantitySold * 5 }},00 </td>
                             <td> {{ $result->dateSell }} </td>
                             <td> R$ {{ $result->quantitySold }},00 </td>
-                            <td> Editar Excluir</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="#"
+                                    role="button">{{ $result->id }}Editar</a>
+                                <a class="btn btn-danger btn-sm" href="#"
+                                    role="button">{{ $result->id }}Excluir</a>
+                            </td>
                         </tr>
                         <?php
                         $totalSells += $result->quantitySold * 5;
@@ -52,13 +57,17 @@
                         ?>
                     @empty
                         <tr>
-                            <td colspan="5" align="center">Não há dados para o período selecionado.<br>Tente outra data.
+                            <td>Não há dados para o período selecionado.<br>Tente outra data.
                             </td>
                         </tr>
                     @endforelse
                     <tr>
-                        <td colspan="2" align="center">Total Vendido: R$ {{ $totalSells }}</td>
-                        <td colspan="2" align="center">Total de Comissões: R$ {{ $totalComissions }}</td>
+                        <td>Total Vendido: R$ {{ $totalSells }}</td>
+                        <td>Total de Comissões: R$ {{ $totalComissions }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
+                        {{-- Gerar um pdf --}}
                     </tr>
                 </tbody>
             </table>
