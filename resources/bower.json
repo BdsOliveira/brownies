@@ -1,0 +1,21 @@
+{
+  "name": "resources",
+  "homepage": "https://github.com/BdsOliveira/brownies",
+  "authors": [
+    "BdsOliveira <bds.commus@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1"
+  }
+}

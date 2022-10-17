@@ -15,14 +15,15 @@
             <input type="date" id="beginDate" name="beginDate">
             <input type="date" id="endDate" name="endDate">
             <input class="submit" type="submit" value="Consultar">
+            <input class="submit" type="submit" formaction="/pdfReport" value="Gerar PDF">
         </form>
 
         <div class="report" id="iReport">
             <table class="table table-hover table-sm">
                 <thead>
                     <tr class="nav justify-content-center">
-                        <th class="nav-item">
-                            RELÁTÓRIO DOS ÚLTIMOS 7 DIAS - DETALHADO
+                        <th class="nav-item col-12">
+                            RELÁTÓRIO DO PERÍODO - DETALHADO
                         </th>
                     </tr>
                     <tr>

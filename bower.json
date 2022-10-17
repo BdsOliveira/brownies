@@ -1,0 +1,21 @@
+{
+  "name": "pdfStyle",
+  "description": "Style the PDF Report",
+  "main": "",
+  "authors": [
+    "BdsOliveira <bds.commus@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/BdsOliveira/brownies",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1"
+  }
+}

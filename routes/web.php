@@ -20,6 +20,7 @@ use App\HTTP\Controllers\ReportController;
 
 Route::get('/', [ReportController::class, 'index'])->middleware('auth');
 Route::get('/report', [ReportController::class, 'report'])->middleware('auth');
+Route::post('/pdfReport', [ReportController::class, 'pdfReport'])->middleware('auth');
 Route::post('/report', [ReportController::class, 'reportFromDate'])->middleware('auth');
 
 Route::get('/create-order', [OrderController::class, 'orders'])->middleware('auth');
