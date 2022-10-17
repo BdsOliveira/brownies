@@ -18,13 +18,16 @@ use App\HTTP\Controllers\CompanyController;
 use App\HTTP\Controllers\OrderController;
 use App\HTTP\Controllers\ReportController;
 
-Route::get('/', [ReportController::class, 'index'])->middleware('auth');
-Route::get('/report', [ReportController::class, 'report'])->middleware('auth');
+Route::get('/', [ReportController::class, 'viewIindex'])->middleware('auth');
+Route::get('/report', [ReportController::class, 'viewReport'])->middleware('auth');
 Route::post('/pdfReport', [ReportController::class, 'pdfReport'])->middleware('auth');
-Route::post('/report', [ReportController::class, 'reportFromDate'])->middleware('auth');
+Route::post('/report', [ReportController::class, 'viewReportFromDate'])->middleware('auth');
 
 Route::get('/create-order', [OrderController::class, 'orders'])->middleware('auth');
 Route::post('/create-order', [OrderController::class, 'store'])->middleware('auth');
+Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
+Route::get('/order/edit/{id}', [OrderController::class, 'edit'])->middleware('auth');
+Route::put('/order/update/{id}', [OrderController::class, 'update'])->middleware('auth');
 
 Route::get('/sellers', [SellerController::class, 'sellers'])->middleware('auth');
 Route::post('/sellers', [SellerController::class, 'store'])->middleware('auth');

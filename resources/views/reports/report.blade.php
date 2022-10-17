@@ -21,8 +21,8 @@
         <div class="report" id="iReport">
             <table class="table table-hover table-sm">
                 <thead>
-                    <tr class="nav justify-content-center">
-                        <th class="nav-item col-12">
+                    <tr>
+                        <th colspan="5">
                             RELÁTÓRIO DO PERÍODO - DETALHADO
                         </th>
                     </tr>
@@ -46,10 +46,17 @@
                             <td> {{ $result->dateSell }} </td>
                             <td> R$ {{ $result->quantitySold }},00 </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="#"
-                                    role="button">{{ $result->id }}Editar</a>
-                                <a class="btn btn-danger btn-sm" href="#"
-                                    role="button">{{ $result->id }}Excluir</a>
+                                <a class="btn btn-info edit-btn btn-sm" href="/order/edit/{{ $result->id }}"
+                                    role="button">
+                                    Editar
+                                </a>
+                                <form action="/order/{{ $result->id }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Excluir
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         <?php
@@ -63,11 +70,11 @@
                         </tr>
                     @endforelse
                     <tr>
-                        <td>Total Vendido: R$ {{ $totalSells }}</td>
-                        <td>Total de Comissões: R$ {{ $totalComissions }}</td>
+                        <td colspan="2">Total Vendido: R$ {{ $totalSells }}</td>
+                        <td colspan="3">Total de Comissões: R$ {{ $totalComissions }}</td>
                     </tr>
                     <tr>
-                        <td>Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
+                        <td colspan="5">Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
                         {{-- Gerar um pdf --}}
                     </tr>
                 </tbody>
