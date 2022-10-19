@@ -20,11 +20,12 @@ use App\HTTP\Controllers\ReportController;
 use App\HTTP\Controllers\ManagementController;
 
 Route::get('/', [ReportController::class, 'viewIindex'])->middleware('auth');
-Route::get('/report', [ReportController::class, 'viewReport'])->middleware('auth');
-Route::post('/pdfReport', [ReportController::class, 'pdfReport'])->middleware('auth');
-Route::post('/report', [ReportController::class, 'viewReportFromDate'])->middleware('auth');
 
-Route::get('/order', [OrderController::class, 'orders'])->middleware('auth');
+Route::get('/report', [ReportController::class, 'viewReport'])->middleware('auth');
+Route::post('/report', [ReportController::class, 'viewReportFromDate'])->middleware('auth');
+Route::post('/pdfReport', [ReportController::class, 'pdfReport'])->middleware('auth');
+
+Route::get('/orders/create', [OrderController::class, 'viewOrders'])->middleware('auth');
 Route::post('/order/create', [OrderController::class, 'store'])->middleware('auth');
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
 Route::get('/order/edit/{id}', [OrderController::class, 'edit'])->middleware('auth');
@@ -39,10 +40,11 @@ Route::delete('/management/seller/{id}', [SellerController::class, 'destroy'])->
 Route::get('/management/seller/edit/{id}', [SellerController::class, 'edit'])->middleware('auth');
 Route::put('/management/seller/update/{id}', [SellerController::class, 'update'])->middleware('auth');
 
+Route::get('/management/companies', [CompanyController::class, 'companies'])->middleware('auth');
+Route::get('/management/company/create', [CompanyController::class, 'viewCreateCompany'])->middleware('auth');
+Route::post('/management/company/create', [CompanyController::class, 'store'])->middleware('auth');
 
-Route::get('/management/company', [CompanyController::class, 'company'])->middleware('auth');
-Route::post('/management/company', [CompanyController::class, 'store'])->middleware('auth');
-Route::get('/management/company/create', [CompanyController::class, 'createCompany'])->middleware('auth');
+
 
 Route::middleware([
     'auth:sanctum',

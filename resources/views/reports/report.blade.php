@@ -3,20 +3,28 @@
 @section('title', 'Relatórios')
 
 @section('content')
-    <div class="head">
-        <p>Faturamento<br>Últimos 7 dias</p>
-        <h1>R$&nbsp;<span id="cash">{{ $payload['faturamento'] }},00</span></h1>
-
-    </div>
+    <div class="head row bg-dark p-3 text-light rounded-pill opacity-75">
+        <div class="col-md-2">Faturamento<br>Últimos 7 dias</div>
+        <h2 class="col-md-1">R$&nbsp;<span id="cash">{{ $payload['faturamento'] }},00</span></h2>
+    </div> <br>
 
     <section class="content">
-        <form action="/report" method="POST">
+        <form action="/report" method="POST" class="row ms-5">
             @csrf
-            <input type="date" id="beginDate" name="beginDate">
-            <input type="date" id="endDate" name="endDate">
-            <input class="submit" type="submit" value="Consultar">
-            <input class="submit" type="submit" formaction="/pdfReport" value="Gerar PDF">
-        </form>
+            <div class="col-md-4">
+                <label for="beginDate" class="form-label">Data inicial: </label>
+                <input type="date" class="form-control form-control-lg" id="beginDate" name="beginDate" required>
+            </div>
+            <div class="col-md-4">
+                <label for="endDate" class="form-label">Data final: </label>
+                <input type="date" class="form-control form-control-lg" id="endDate" name="endDate" required>
+            </div>
+            <div class="col-md-4">
+                <div class="form-label"> &nbsp; </div>
+                <input class="submit btn btn-primary btn-lg" type="submit" value="Consultar">
+                <input class="submit btn btn-primary btn-lg" type="submit" formaction="/pdfReport" value="Gerar PDF">
+            </div>
+        </form> <br>
 
         <div class="result-table" id="iReport">
             <table class="table table-hover table-sm">

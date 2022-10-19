@@ -3,12 +3,9 @@
 @section('title', 'Cadastrar Vendedor')
 
 @section('content')
-    <div class="actions">
-        <a href="/management/sellers">
-            Vendedores
-        </a>
-        <a href="/management/company">
-            Empresas
-        </a>
-    </div>
+    <section class="row">
+        <a href="/management/sellers" class="btn-menus col-md-5 m-2"><i class="fa fa-home"></i> Vendedores</a>
+        <a href="/management/companies" class="btn-menus col-md-5 m-2"><i class="fa fa-home"></i> Empresas</a>
+    </section>
+
 @endsection

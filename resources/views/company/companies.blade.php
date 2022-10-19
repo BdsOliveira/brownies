@@ -3,10 +3,11 @@
 @section('title', 'Gerenciar Empresas')
 
 @section('content')
-    <div class="head">
-        <h1 class="">Empresas&nbsp;<span id="cash"></span></h1>
+    <h2 class="">Empresas</h2>
 
-    </div>
+    <section class="mt-4 mb-5">
+        <a href="/management/company/create" class="btn-menus"><i class="fa fa-home"></i> Cadastrar nova Empresa</a>
+    </section>
 
     <section class="content result-table">
         <table class="table table-hover table-sm">

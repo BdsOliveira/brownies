@@ -3,13 +3,13 @@
 @section('title', 'Gerenciar Vendedores')
 
 @section('content')
-    <div class="head">
-        <h1 class="">Vendedores&nbsp;<span id="cash"></span></h1>
-    </div>
+    <h2 class="">Vendedores</h2>
 
-    <a href="/management/seller/create">Cadastrar novo vendedor </a>
+    <section class="mt-4 mb-5">
+        <a href="/management/seller/create" class="btn-menus"><i class="fa fa-home"></i> Cadastrar novo Vendedor</a>
+    </section>
+
     <section class="content result-table">
-
         <table class="table table-hover table-sm">
             <thead>
                 <tr>

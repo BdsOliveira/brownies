@@ -9,7 +9,7 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function orders()
+    public function viewOrders()
     {
         $companies = Company::all();
         $sellers = Seller::all();
@@ -21,7 +21,7 @@ class OrderController extends Controller
         $order = new Order;
         $order->fill($request->all());
         $order->save();
-        return redirect('/order')->with('msg', 'Venda registrada com sucesso!');
+        return redirect('/orders/create')->with('msg', 'Venda registrada com sucesso!');
     }
 
     public function destroy($id)
