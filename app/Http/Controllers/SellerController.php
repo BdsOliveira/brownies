@@ -39,7 +39,6 @@ class SellerController extends Controller
     public function edit($id)
     {
         $seller = Seller::findOrFail($id);
-        // dd($seller);
         $companies = Company::all();
         return view('/sellers/edit-seller', ['seller' => $seller, 'companies' => $companies]);
     }

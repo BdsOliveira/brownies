@@ -29,10 +29,11 @@
                             {{ $company->companyName }}
                         </td>
                         <td>
-                            <a class="btn btn-info edit-btn btn-sm" href="/company/edit/{{ $company->id }}" role="button">
+                            <a class="btn btn-info edit-btn btn-sm" href="/management/company/edit/{{ $company->id }}"
+                                role="button">
                                 Editar
                             </a>
-                            <form action="/company/{{ $company->id }}" method="POST">
+                            <form action="/management/company/{{ $company->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">
@@ -44,7 +45,5 @@
                 @endforeach
             </tbody>
         </table>
-
     </section>
-
 @endsection

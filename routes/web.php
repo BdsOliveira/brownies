@@ -43,8 +43,9 @@ Route::put('/management/seller/update/{id}', [SellerController::class, 'update']
 Route::get('/management/companies', [CompanyController::class, 'companies'])->middleware('auth');
 Route::get('/management/company/create', [CompanyController::class, 'viewCreateCompany'])->middleware('auth');
 Route::post('/management/company/create', [CompanyController::class, 'store'])->middleware('auth');
-
-
+Route::delete('/management/company/{id}', [CompanyController::class, 'destroy'])->middleware('auth');
+Route::get('/management/company/edit/{id}', [CompanyController::class, 'edit'])->middleware('auth');
+Route::put('/management/company/update/{id}', [CompanyController::class, 'update'])->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',
