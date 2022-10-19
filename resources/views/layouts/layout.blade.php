@@ -23,19 +23,20 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- Install VueJS --}}
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
 
 </head>
 
 <body>
     <menu>
-        <div class="icon-bar">
-            <a class="active" href="/"><i class="fa fa-home"></i></a>
-            <a href="/create-order"><i class="fa-solid fa-circle-plus"></i></a>
-            <a href="report"><i class="fa-solid fa-chart-column"></i></a>
+        <div>
+            <a href="/">INICIO</a>
+            <a href="/order">CADASTRAR VENDA</a>
+            <a href="/report">RELATÓRIOS</a>
+            <a href="/management">GERENCIAR</a>
         </div>
     </menu>
 
@@ -45,10 +46,6 @@
         </div>
     @endif
     @yield('content')
-
-    @guest
-        <a href="/login" type="submit" value="Login" class="nav-link">Login</a>
-    @endguest
 </body>
 
 </html>

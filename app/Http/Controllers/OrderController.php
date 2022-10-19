@@ -21,7 +21,7 @@ class OrderController extends Controller
         $order = new Order;
         $order->fill($request->all());
         $order->save();
-        return redirect('/')->with('msg', 'Venda registrada com sucesso!');
+        return redirect('/order')->with('msg', 'Venda registrada com sucesso!');
     }
 
     public function destroy($id)

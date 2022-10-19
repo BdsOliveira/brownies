@@ -17,27 +17,32 @@ use App\HTTP\Controllers\SellerController;
 use App\HTTP\Controllers\CompanyController;
 use App\HTTP\Controllers\OrderController;
 use App\HTTP\Controllers\ReportController;
+use App\HTTP\Controllers\ManagementController;
 
 Route::get('/', [ReportController::class, 'viewIindex'])->middleware('auth');
 Route::get('/report', [ReportController::class, 'viewReport'])->middleware('auth');
 Route::post('/pdfReport', [ReportController::class, 'pdfReport'])->middleware('auth');
 Route::post('/report', [ReportController::class, 'viewReportFromDate'])->middleware('auth');
 
-Route::get('/create-order', [OrderController::class, 'orders'])->middleware('auth');
-Route::post('/create-order', [OrderController::class, 'store'])->middleware('auth');
+Route::get('/order', [OrderController::class, 'orders'])->middleware('auth');
+Route::post('/order/create', [OrderController::class, 'store'])->middleware('auth');
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
 Route::get('/order/edit/{id}', [OrderController::class, 'edit'])->middleware('auth');
 Route::put('/order/update/{id}', [OrderController::class, 'update'])->middleware('auth');
 
-Route::get('/sellers', [SellerController::class, 'sellers'])->middleware('auth');
-Route::post('/sellers', [SellerController::class, 'store'])->middleware('auth');
+Route::get('/management', [ManagementController::class, 'management'])->middleware('auth');
 
-Route::get('/sellers/create', [SellerController::class, 'createSeller'])->middleware('auth');
+Route::get('/management/sellers', [SellerController::class, 'viewSellers'])->middleware('auth');
+Route::get('/management/seller/create', [SellerController::class, 'viewCreateSeller'])->middleware('auth');
+Route::post('/management/seller/create', [SellerController::class, 'store'])->middleware('auth');
+Route::delete('/management/seller/{id}', [SellerController::class, 'destroy'])->middleware('auth');
+Route::get('/management/seller/edit/{id}', [SellerController::class, 'edit'])->middleware('auth');
+Route::put('/management/seller/update/{id}', [SellerController::class, 'update'])->middleware('auth');
 
-Route::get('/company', [CompanyController::class, 'company'])->middleware('auth');
-Route::post('/company', [CompanyController::class, 'store'])->middleware('auth');
 
-Route::get('/company/create', [CompanyController::class, 'createCompany'])->middleware('auth');
+Route::get('/management/company', [CompanyController::class, 'company'])->middleware('auth');
+Route::post('/management/company', [CompanyController::class, 'store'])->middleware('auth');
+Route::get('/management/company/create', [CompanyController::class, 'createCompany'])->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

@@ -8,7 +8,7 @@
 
     </div>
     <section class="content">
-        <form id="formCreateSell" method="POST">
+        <form action="/order/create" method="POST">
             @csrf
             <label for="id_seller">Nome do Vendedor:</label><br>
             <select class="field" name="id_seller" id="id_seller">

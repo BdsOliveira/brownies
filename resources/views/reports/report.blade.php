@@ -18,7 +18,7 @@
             <input class="submit" type="submit" formaction="/pdfReport" value="Gerar PDF">
         </form>
 
-        <div class="report" id="iReport">
+        <div class="result-table" id="iReport">
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>

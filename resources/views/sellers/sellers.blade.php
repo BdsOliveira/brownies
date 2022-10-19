@@ -7,33 +7,40 @@
         <h1 class="">Vendedores&nbsp;<span id="cash"></span></h1>
     </div>
 
-    <section class="content">
-        <div class="actions">
-            <a href="sellers/create">
-                <div class="iten-action">
-                    <i class="fa-solid fa-circle-plus"></i>
-                    Cadastrar vendedor
-                </div>
-            </a>
-            <a href="company/create">
-                <div class="iten-action">
-                    <i class="fa-solid fa-circle-plus"></i>
-                    Cadastrar Empresa
-                </div>
-            </a>
-        </div>
-        <table>
-            <thead align="center">Vendedores Cadastradas</thead>
-            <tbody>
+    <a href="/management/seller/create">Cadastrar novo vendedor </a>
+    <section class="content result-table">
+
+        <table class="table table-hover table-sm">
+            <thead>
                 <tr>
-                    <td align="center" colspan="2">Nome do Vendedor</td>
+                    <th colspan="2">
+                        Vendedores Cadastrados
+                    </th>
                 </tr>
+                <tr>
+                    <th scope="row">Nome do Vendedor</td>
+                    <th scope="row">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($sellers as $seller)
                     <tr>
-                        <td align="right">
+                        <td>
                             {{ $seller->nameSeller }}
                         </td>
-                        <td>Editar Exluir</td>
+                        <td>
+                            <a class="btn btn-info edit-btn btn-sm" href="/management/seller/edit/{{ $seller->id }}"
+                                role="button">
+                                Editar
+                            </a>
+                            <form action="/management/seller/{{ $seller->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Excluir
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

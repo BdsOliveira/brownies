@@ -12,7 +12,7 @@
         <div class="actions">
         </div>
         <div id="seller-create-container" class="col-md-6 offset-md-3">
-            <form action="/sellers" method="POST">
+            <form action="/management/seller/create" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="nameSeller">Vendedor:</label>

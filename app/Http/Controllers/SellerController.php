@@ -8,13 +8,13 @@ use App\Models\Company;
 
 class SellerController extends Controller
 {
-    public function sellers()
+    public function viewSellers()
     {
         $sellers = Seller::all();
         return view('sellers/sellers', ['sellers' => $sellers]);
     }
 
-    public function createSeller()
+    public function viewCreateSeller()
     {
         $companies = Company::all();
         return view('/sellers/create-seller', ['companies' => $companies]);
@@ -27,6 +27,26 @@ class SellerController extends Controller
         $seller->fill($request->all());
         $seller->save();
 
-        return redirect('/sellers')->with('msg', 'Vendedor cadastrado com sucesso!');;
+        return redirect('/management/sellers')->with('msg', 'Vendedor cadastrado com sucesso!');;
+    }
+
+    public function destroy($id)
+    {
+        Seller::findOrFail($id)->delete();
+        return redirect('/management/sellers')->with('msg', 'Vendedor excluído com sucesso.');
+    }
+
+    public function edit($id)
+    {
+        $seller = Seller::findOrFail($id);
+        // dd($seller);
+        $companies = Company::all();
+        return view('/sellers/edit-seller', ['seller' => $seller, 'companies' => $companies]);
+    }
+
+    public function update(Request $req)
+    {
+        Seller::findOrFail($req->id)->update($req->all());
+        return redirect('/management/sellers')->with('msg', 'Vendedor editado com sucesso.');
     }
 }
