@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center"><a href="https://laravel.com" target="_blank">SYSBRO</a></h1>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -7,15 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About SYSBRO
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+SYSBRO is a web application made with Laravel that allows the management for sellers, companies and orders. And it calculates commissions for sellers. To build this software I use:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Laravel](https://laravel.com/) - The PHP Framework
+for Web Artisans.
+- [Blade](https://laravel.com/docs/9.x/blade) - Blade is template engine that is included with Laravel.
+- [Composer](https://getcomposer.org/) - A Dependency Manager for PHP.
+- [Eloquent](https://laravel.com/docs/eloquent) - An object-relational mapper (ORM) that makes it enjoyable to interact with your database.
+- [Bootstrap](https://getbootstrap.com/) - Build fast, responsive sites with Bootstrap.
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
