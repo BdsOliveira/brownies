@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\HTTP\Controllers\SellerController;
-use App\HTTP\Controllers\CompanyController;
-use App\HTTP\Controllers\OrderController;
-use App\HTTP\Controllers\ReportController;
-use App\HTTP\Controllers\ManagementController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ManagementController;
 
 Route::get('/', [ReportController::class, 'viewIindex'])->middleware('auth');
 
