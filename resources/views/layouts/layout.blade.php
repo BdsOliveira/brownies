@@ -52,7 +52,7 @@
                         </li>
                         <li class="nav-item"><a href="/management"
                                 class="nav-link keychainify-checked text-light ">Gerenciar</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link keychainify-checked text-light ">Minha
+                        <li class="nav-item"><a href="/user/profile" class="nav-link keychainify-checked text-light ">Minha
                                 conta</a>
                         </li>
                     </ul>

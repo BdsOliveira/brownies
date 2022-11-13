@@ -14,7 +14,7 @@
                     <input type="text" name="companyName" id="companyName" class="form-control"
                         placeholder="Nome da empresa...">
                 </div>
-                <input type="submit" class="btn btn-primary" value="Cadastrar Empresa">f
+                <input type="submit" class="btn btn-primary" value="Cadastrar Empresa">
             </form>
         </div>
     </section>

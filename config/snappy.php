@@ -6,7 +6,8 @@ return array(
     'pdf' => array(
         'enabled'   => true,
         // 'binary'    => env('WKHTMLTO', '/usr/local/bin/wkhtmltopdf'),
-        'binary'    => base_path('/vendor/wemersonjanuario/wkhtmltopdf-windows/bin/64bit/wkhtmltopdf'),
+        'binary'    => 'wkhtmltopdf-amd64', // linux
+        // 'binary'    => base_path('/vendor/wemersonjanuario/wkhtmltopdf-windows/bin/64bit/wkhtmltopdf'), // windows
         'encoding'  => 'UTF-8',
         'timeout'   => false,
         'options'   => array(
