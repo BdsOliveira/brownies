@@ -13,9 +13,15 @@
 
     <table class="table table-sm">
         <thead>
-            <tr class="nav justify-content-center">
+            <tr class="justify-content-center">
                 <th colspan="2">
                     RELATÓRIO DO PERÍODO - RESUMIDO
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Período: {{ $payload['beginDate']->format('d/m/Y') }}
+                    até {{ $payload['endDate']->format('d/m/Y') }}
                 </th>
             </tr>
             <tr>

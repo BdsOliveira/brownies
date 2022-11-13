@@ -83,7 +83,6 @@
                     </tr>
                     <tr>
                         <td colspan="5">Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
-                        {{-- Gerar um pdf --}}
                     </tr>
                 </tbody>
             </table>

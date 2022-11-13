@@ -36,6 +36,8 @@ class ReportController extends Controller
             'orders' => $orders,
             'ordersGroups' => $ordersGroups->all(),
             'faturamento' => $faturamento,
+            'beginDate' => $beginDate,
+            'endDate' => $endDate,
         ];
         return $payload;
     }
@@ -45,14 +47,18 @@ class ReportController extends Controller
         $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
         $pdf = PDF::loadHTML('');
         $pdf->loadView('reports.pdfReport', ['payload' => $payload]);
+
+        $pdf->setOption('header-html', '<h1>Título</h1>'); // . '/relatorio/header/' . $escola->id);
+        $pdf->setOption('footer-html', '<h3>Sysbro &copy; 2022</h3>'); // . '/relatorio/footer-paginacao');
+
         $pdf->setOption('javascript-delay', 2000);
         $pdf->setOption('enable-javascript', true);
         $pdf->setOption('no-stop-slow-scripts', true);
-        $pdf->setOption('header-spacing', 2);
+        $pdf->setOption('header-spacing', 20);
         $pdf->setOption('margin-top', 20);
         $pdf->setOption('margin-left', 25);
         $pdf->setOption('margin-right', 25);
-        // $pdf->setOption('title', 'RELATÓRIO');
+        $pdf->setOption('title', 'RELATÓRIO');
         return $pdf->stream();
     }
 
@@ -70,5 +76,4 @@ class ReportController extends Controller
         $payload = ReportController::invoicing($beginDate, $endDate);
         return $payload;
     }
-
 }
