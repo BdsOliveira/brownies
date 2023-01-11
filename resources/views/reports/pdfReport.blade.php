@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
     <table class="table table-sm">
         <thead>
             <tr class="justify-content-center">
@@ -56,15 +55,14 @@
             </tr>
             <tr>
                 <td>Total Vendido: R$ {{ $totalComissions * 5 }}</td>
-                <td colspan="2">Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
-                {{-- Gerar um pdf --}}
+                <td colspan="2">Total de comissão do sistema: R$ {{ $totalComissions * 0.2 }}</td>
             </tr>
         </tbody>
     </table>
     <hr>
     <hr>
     <table class="table table-hover table-sm">
-        <thead>
+        <tbody>
             <tr class="nav justify-content-center">
                 <th colspan="4">
                     RELÁTÓRIO DO PERÍODO - DETALHADO
@@ -76,8 +74,6 @@
                 <th spoce="row">Data</th>
                 <th spoce="row">Comissão</th>
             </tr>
-        </thead>
-        <tbody>
             {{-- <?php
             $totalSells = 0;
             $totalComissions = 0;
@@ -105,7 +101,6 @@
             </tr>
             <tr>
                 <td colspan="5">Total de Sistema: R$ {{ $totalComissions * 0.2 }}</td>
-                {{-- Gerar um pdf --}}
             </tr>
         </tbody>
     </table>

@@ -44,21 +44,23 @@ class ReportController extends Controller
 
     public function pdfReport(Request $request)
     {
+        $anoAtual = Carbon::now()->format('Y');
         $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
         $pdf = PDF::loadHTML('');
         $pdf->loadView('reports.pdfReport', ['payload' => $payload]);
-
-        $pdf->setOption('header-html', '<h1>Título</h1>'); // . '/relatorio/header/' . $escola->id);
-        $pdf->setOption('footer-html', '<h3>Sysbro &copy; 2022</h3>'); // . '/relatorio/footer-paginacao');
+        $pdf->setOption('header-center', 'Relatório de vendas'); // . '/relatorio/header/' . $escola->id);
+        $pdf->setOption('footer-right', 'Sysbro '. $anoAtual); // . '/relatorio/footer-paginacao');
 
         $pdf->setOption('javascript-delay', 2000);
         $pdf->setOption('enable-javascript', true);
         $pdf->setOption('no-stop-slow-scripts', true);
-        $pdf->setOption('header-spacing', 20);
-        $pdf->setOption('margin-top', 20);
+        $pdf->setOption('header-spacing', 10);
+        $pdf->setOption('footer-spacing', 10);
+        $pdf->setOption('margin-top', 25);
+        $pdf->setOption('margin-bottom', 25);
         $pdf->setOption('margin-left', 25);
         $pdf->setOption('margin-right', 25);
-        $pdf->setOption('title', 'RELATÓRIO');
+        $pdf->setOption('title', 'Relatório de ' . $request->beginDate . ' até ' . $request->endDate);
         return $pdf->stream();
     }
 
