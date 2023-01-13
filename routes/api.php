@@ -3,6 +3,7 @@
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,11 @@ Route::prefix('companies')->group(function () {
     Route::get('/{id}', [CompanyController::class, 'show']);
     Route::put('/{id}', [CompanyController::class, 'update']);
     Route::delete('/{id}', [CompanyController::class, 'delete']);
+});
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::get('/{id}', [ProductController::class, 'show']);
+    Route::put('/{id}', [ProductController::class, 'update']);
+    Route::delete('/{id}', [ProductController::class, 'delete']);
 });
