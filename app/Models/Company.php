@@ -11,9 +11,9 @@ class Company extends Model
 
     // protected $table = "companies";
 
-    // public function sellers()
-    // {
-    //     return $this->hasMany(Seller::class);
-    // }
+    public function sellers()
+    {
+        return $this->hasMany(Seller::class);
+    }
     protected $fillable = ['companyName'];
 }

@@ -9,7 +9,12 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return response()->json(Company::get());
+        return Company::paginate(10);
+    }
+
+    public function show($id)
+    {
+        return Company::with('sellers')->find($id);
     }
 
     public function store(Request $request)
