@@ -14,7 +14,7 @@ class CompanyController extends Controller
 
     public function show($id)
     {
-        return Company::with('sellers')->find($id);
+        return Company::with('sellers')->findOrFail($id);
     }
 
     public function store(Request $request)
@@ -24,59 +24,11 @@ class CompanyController extends Controller
 
     public function update(Request $request)
     {
-        Company::findOrFail($request->id)->update($request->all());
-        return response()->json(
-            [
-                'success'
-            ],
-            200,
-        );
+        return Company::findOrFail($request->id)->update($request->all());
     }
 
     public function delete($id)
     {
-        Company::findOrFail($id)->delete();
-        return response()->json(
-            [
-                'success'
-            ],
-            200,
-        );
+        return Company::findOrFail($id)->delete();
     }
-    // public function companies()
-    // {
-    //     $companies = Company::all();
-    //     return view('company/companies', ['companies' => $companies]);
-    // }
-
-    // public function viewCreateCompany()
-    // {
-    //     return view('/company/create-company');
-    // }
-
-    // public function store(Request $request)
-    // {
-    //     $company = new Company;
-    //     $company->fill($request->all());
-    //     $company->save();
-    //     return redirect('/management/companies')->with('msg', 'Empresa cadastrada com sucesso!');
-    // }
-
-    // public function destroy($id)
-    // {
-    //     Company::findOrFail($id)->delete();
-    //     return redirect('/management/companies')->with('msg', 'Empresa excluída com sucesso!');
-    // }
-
-    // public function edit($id)
-    // {
-    //     $company = Company::findOrFail($id);
-    //     return view('/company/edit-company', ['company' => $company]);
-    // }
-
-    // public function update(Request $req)
-    // {
-    //     Company::findOrFail($req->id)->update($req->all());
-    //     return redirect('/management/companies')->with('msg', 'Empresa atualizada com sucesso.');
-    // }
 }
