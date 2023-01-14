@@ -12,12 +12,10 @@ class Seller extends Model
     use HasFactory;
     use HasUuids;
 
-    // protected $table = "sellers";
-
-    // public function company()
-    // {
-    //     return $this->belongsTo(Company::class);
-    // }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 
     protected $fillable = ['name', 'company_id'];
 }

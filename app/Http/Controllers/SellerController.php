@@ -14,7 +14,7 @@ class SellerController extends Controller
 
     public function show($id)
     {
-        return Seller::get()->find($id);
+        return Seller::with('company')->find($id);
     }
 
     public function store(Request $request)
