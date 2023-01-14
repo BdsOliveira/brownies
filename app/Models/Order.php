@@ -16,5 +16,9 @@ class Order extends Model
         return $this->belongsTo(Seller::class);
     }
 
-    protected $fillable = ['id_seller', 'quantitySold', 'dateSell'];
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    protected $fillable = ['seller_id', 'product_id', 'quantity', 'date'];
 }
