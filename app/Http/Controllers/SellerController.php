@@ -19,7 +19,7 @@ class SellerController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+        return Seller::create($request->all());
     }
 
     public function update(Request $request)

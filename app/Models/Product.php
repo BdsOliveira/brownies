@@ -10,8 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
-protected static function booted()
-{
-    static::creating(fn(Product $product) => $product->id = (string) Uuid::uuid4());
-}
+    protected static function booted()
+    {
+        static::creating(fn(Product $product) => $product->id = (string) Uuid::uuid4());
+    }
 }

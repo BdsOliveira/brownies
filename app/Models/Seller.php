@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use Ramsey\Uuid\Uuid;
 
 class Seller extends Model
 {
     use HasFactory;
+    use HasUuids;
 
     // protected $table = "sellers";
 
@@ -16,5 +19,5 @@ class Seller extends Model
     //     return $this->belongsTo(Company::class);
     // }
 
-    protected $fillable = ['nameSeller', 'id_company'];
+    protected $fillable = ['name', 'company_id'];
 }
