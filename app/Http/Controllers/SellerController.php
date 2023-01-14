@@ -9,7 +9,7 @@ class SellerController extends Controller
 {
     public function index()
     {
-        return Seller::paginate(10);
+        return Seller::with('company')->paginate(10);
     }
 
     public function show($id)

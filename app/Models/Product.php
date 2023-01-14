@@ -17,6 +17,6 @@ class Product extends Model
         return $this->belongsTo(Company::class);
     }
 
-    protected $fillable = ['company_id', 'name', 'price', 'description', 'status'];
+    protected $fillable = ['company_id', 'name', 'price', 'commission', 'description', 'status'];
 
 }

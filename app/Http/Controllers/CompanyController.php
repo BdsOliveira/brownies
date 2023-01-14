@@ -9,7 +9,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return Company::paginate(10);
+        return Company::with('sellers')->paginate(10);
     }
 
     public function show($id)

@@ -9,33 +9,26 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return response()->json(Product::get());
+        return Product::with('company')->paginate(10);
+    }
+
+    public function show($id)
+    {
+        return Product::with('company')->findOrFail($id);
     }
 
     public function store(Request $request)
     {
-        return $request->all();
+        return Product::create($request->all());
     }
 
     public function update(Request $request)
     {
-        Product::findOrFail($request->id)->update($request->all());
-        return response()->json(
-            [
-                'success'
-            ],
-            200,
-        );
+        return Product::findOrFail($request->id)->update($request->all());
     }
 
     public function delete($id)
     {
-        Product::findOrFail($id)->delete();
-        return response()->json(
-            [
-                'success'
-            ],
-            200,
-        );
+        return Product::findOrFail($id)->delete();
     }
 }
