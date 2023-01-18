@@ -9,12 +9,12 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return Company::with('sellers')->paginate(10);
+        return Company::paginate(10);
     }
 
     public function show($id)
     {
-        return Company::with('sellers')->findOrFail($id);
+        return Company::findOrFail($id);
     }
 
     public function store(Request $request)
