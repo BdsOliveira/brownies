@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\Seller;
 
 class CompanyController extends Controller
 {
@@ -15,6 +16,11 @@ class CompanyController extends Controller
     public function show($id)
     {
         return Company::findOrFail($id);
+    }
+
+    public function showSellers($company_id)
+    {
+        return Seller::where('company_id', $company_id)->get();
     }
 
     public function store(Request $request)
