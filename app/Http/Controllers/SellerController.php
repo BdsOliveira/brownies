@@ -12,7 +12,7 @@ class SellerController extends Controller
     {
         return Seller::with('company')
             ->latest()
-            ->paginate(10);
+            ->get();
     }
 
     public function show($id)
@@ -21,6 +21,19 @@ class SellerController extends Controller
     }
 
     public function showOrders($seller_id)
+    {
+        return
+            Order::where('seller_id', $seller_id)
+                ->with([
+                    'product' => function ($query) {
+                        return $query->with('company');
+                }])
+                ->with('seller')
+                ->latest()
+                ->paginate(15);
+    }
+
+    public function showOrdersFromPeriod($seller_id, $beginDate, $endDate)
     {
         return
             Order::where('seller_id', $seller_id)
