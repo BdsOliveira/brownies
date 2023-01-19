@@ -28,6 +28,7 @@ Route::prefix('sellers')->group(function () {
     Route::get('/{id}', [SellerController::class, 'show']);
     Route::put('/{id}', [SellerController::class, 'update']);
     Route::delete('/{id}', [SellerController::class, 'delete']);
+    Route::get('/{seller_id}/orders', [SellerController::class, 'showOrders']);
 });
 Route::prefix('orders')->group(function () {
     Route::get('/', [OrderController::class, 'index']);
@@ -42,8 +43,9 @@ Route::prefix('companies')->group(function () {
     Route::get('/{id}', [CompanyController::class, 'show']);
     Route::put('/{id}', [CompanyController::class, 'update']);
     Route::delete('/{id}', [CompanyController::class, 'delete']);
-
     Route::get('/{company_id}/sellers', [CompanyController::class, 'showSellers']);
+    Route::get('/{company_id}/products', [CompanyController::class, 'showProducts']);
+    Route::get('/{company_id}/orders', [CompanyController::class, 'showOrders']);
 });
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);

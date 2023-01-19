@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::with('company')->paginate(10);
+        return Product::with('company')->latest()->paginate(10);
     }
 
     public function show($id)

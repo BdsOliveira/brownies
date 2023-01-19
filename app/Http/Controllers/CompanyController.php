@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\Seller;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        return Company::paginate(10);
+        return Company::latest()->get();
     }
 
     public function show($id)
@@ -20,7 +22,38 @@ class CompanyController extends Controller
 
     public function showSellers($company_id)
     {
-        return Seller::where('company_id', $company_id)->get();
+        return Seller::where('company_id', $company_id)
+            ->with('company')
+            ->latest()
+            ->get();
+    }
+
+    public function showProducts($company_id)
+    {
+        return Product::where('company_id', $company_id)
+            ->with('company')
+            ->latest()
+            ->get();
+    }
+
+    public function showOrders($company_id)
+    {
+        $sellers = Seller::select('id')
+            ->where('company_id', $company_id)
+            ->get();
+        return
+            Order::whereIn('seller_id', $sellers)
+                ->with([
+                    'seller' => function ($query) {
+                        return $query->with('company');
+                    }
+                ])
+                ->with([
+                    'product' => function ($query) {
+                        return $query->with('company');
+                }])
+                ->latest()
+                ->get();
     }
 
     public function store(Request $request)
