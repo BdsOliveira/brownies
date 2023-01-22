@@ -12,6 +12,10 @@ use PDF;
 class ReportController extends Controller
 {
 
+    public function index()
+    {
+        return ReportController::invoicing(now()->subDay(30), now());
+    }
     public function viewIindex()
     {
         $invoice = ReportController::invoicing(now()->subDay(30), now());
