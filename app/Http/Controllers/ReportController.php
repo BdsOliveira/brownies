@@ -15,7 +15,7 @@ class ReportController extends Controller
 
     public function index()
     {
-        return ReportController::invoicing(Order::get(), now()->subDays(30), now());
+        return ReportController::invoicing(Order::get());
     }
 
     public static function invoicing($orders)
