@@ -16,30 +16,34 @@ class ReportController extends Controller
     {
         return ReportController::invoicing(now()->subDay(30), now());
     }
-    public function viewIindex()
-    {
-        $invoice = ReportController::invoicing(now()->subDay(30), now());
-        return view('/index', ['payload' => $invoice]);
-    }
+    // public function viewIindex()
+    // {
+    //     $invoice = ReportController::invoicing(now()->subDay(30), now());
+    //     return view('/index', ['payload' => $invoice]);
+    // }
 
-    public function viewReport()
-    {
-        $invoice = ReportController::invoicing(now()->subDay(7), now());
-        return view('/reports/report', ['payload' => $invoice]);
-    }
+    // public function viewReport()
+    // {
+    //     $invoice = ReportController::invoicing(now()->subDay(7), now());
+    //     return view('/reports/report', ['payload' => $invoice]);
+    // }
 
 
     public function invoicing($beginDate, $endDate)
     {
         $orders = (new Reports)->reportFromDays($beginDate, $endDate);
-        $faturamento = (new Reports)->faturamento($orders);
+        $billing = (new Reports)->billing($orders);
 
-        $ordersGroups = $orders->groupBy('id_seller');
+        $ordersBySeller = $orders->groupBy('seller_id');
+        $ordersByProduct = $orders->groupBy('product_id');
+        $ordersByDate = $orders->groupBy('date');
 
         $payload = [
             'orders' => $orders,
-            'ordersGroups' => $ordersGroups->all(),
-            'faturamento' => $faturamento,
+            'ordersBySeller' => $ordersBySeller,
+            'ordersByProduct' => $ordersByProduct,
+            'ordersByDate' => $ordersByDate,
+            'billing' => $billing,
             'beginDate' => $beginDate,
             'endDate' => $endDate,
         ];
@@ -66,18 +70,18 @@ class ReportController extends Controller
         return $pdf->stream();
     }
 
-    public function viewReportFromDate(Request $request)
-    {
-        $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
-        return view('/reports/report', ['payload' => $payload]);
-    }
+    // public function viewReportFromDate(Request $request)
+    // {
+    //     $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
+    //     return view('/reports/report', ['payload' => $payload]);
+    // }
 
-    public function reportFromDate($beginDate, $endDate)
-    {
-        $beginDate = Carbon::createFromFormat('Y-m-d', $beginDate);
-        $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
+    // public function reportFromDate($beginDate, $endDate)
+    // {
+    //     $beginDate = Carbon::createFromFormat('Y-m-d', $beginDate);
+    //     $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
 
-        $payload = ReportController::invoicing($beginDate, $endDate);
-        return $payload;
-    }
+    //     $payload = ReportController::invoicing($beginDate, $endDate);
+    //     return $payload;
+    // }
 }
