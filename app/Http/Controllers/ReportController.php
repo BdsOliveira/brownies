@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Seller;
 use App\Services\Order\Reports;
@@ -14,24 +15,11 @@ class ReportController extends Controller
 
     public function index()
     {
-        return ReportController::invoicing(now()->subDay(30), now());
+        return ReportController::invoicing(Order::get(), now()->subDays(30), now());
     }
-    // public function viewIindex()
-    // {
-    //     $invoice = ReportController::invoicing(now()->subDay(30), now());
-    //     return view('/index', ['payload' => $invoice]);
-    // }
 
-    // public function viewReport()
-    // {
-    //     $invoice = ReportController::invoicing(now()->subDay(7), now());
-    //     return view('/reports/report', ['payload' => $invoice]);
-    // }
-
-
-    public function invoicing($beginDate, $endDate)
+    public static function invoicing($orders, $beginDate, $endDate)
     {
-        $orders = (new Reports)->reportFromDays($beginDate, $endDate);
         $billing = (new Reports)->billing($orders);
 
         $ordersBySeller = $orders->groupBy('seller_id');
@@ -50,25 +38,37 @@ class ReportController extends Controller
         return $payload;
     }
 
-    public function pdfReport(Request $request)
-    {
-        $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
-        $pdf = PDF::loadHTML('');
-        $pdf->loadView('reports.pdfReport', ['payload' => $payload]);
+    // public function viewIindex()
+    // {
+    //     $invoice = ReportController::invoicing(now()->subDay(30), now());
+    //     return view('/index', ['payload' => $invoice]);
+    // }
 
-        $pdf->setOption('header-html', '<h1>Título</h1>'); // . '/relatorio/header/' . $escola->id);
-        $pdf->setOption('footer-html', '<h3>Sysbro &copy; 2022</h3>'); // . '/relatorio/footer-paginacao');
+    // public function viewReport()
+    // {
+    //     $invoice = ReportController::invoicing(now()->subDay(7), now());
+    //     return view('/reports/report', ['payload' => $invoice]);
+    // }
 
-        $pdf->setOption('javascript-delay', 2000);
-        $pdf->setOption('enable-javascript', true);
-        $pdf->setOption('no-stop-slow-scripts', true);
-        $pdf->setOption('header-spacing', 20);
-        $pdf->setOption('margin-top', 20);
-        $pdf->setOption('margin-left', 25);
-        $pdf->setOption('margin-right', 25);
-        $pdf->setOption('title', 'RELATÓRIO');
-        return $pdf->stream();
-    }
+    // public function pdfReport(Request $request)
+    // {
+    //     $payload = ReportController::reportFromDate($request->beginDate, $request->endDate);
+    //     $pdf = PDF::loadHTML('');
+    //     $pdf->loadView('reports.pdfReport', ['payload' => $payload]);
+
+    //     $pdf->setOption('header-html', '<h1>Título</h1>'); // . '/relatorio/header/' . $escola->id);
+    //     $pdf->setOption('footer-html', '<h3>Sysbro &copy; 2022</h3>'); // . '/relatorio/footer-paginacao');
+
+    //     $pdf->setOption('javascript-delay', 2000);
+    //     $pdf->setOption('enable-javascript', true);
+    //     $pdf->setOption('no-stop-slow-scripts', true);
+    //     $pdf->setOption('header-spacing', 20);
+    //     $pdf->setOption('margin-top', 20);
+    //     $pdf->setOption('margin-left', 25);
+    //     $pdf->setOption('margin-right', 25);
+    //     $pdf->setOption('title', 'RELATÓRIO');
+    //     return $pdf->stream();
+    // }
 
     // public function viewReportFromDate(Request $request)
     // {
