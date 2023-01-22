@@ -15,7 +15,7 @@ class ReportController extends Controller
 
     public function index()
     {
-        return ReportController::invoicing(Order::get());
+        return ReportController::invoicing(Order::latest()->get());
     }
 
     public static function invoicing($orders)
