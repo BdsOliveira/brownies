@@ -22,8 +22,8 @@ class ReportController extends Controller
     {
         $billing = (new Reports)->billing($orders);
 
-        $ordersBySeller = $orders->groupBy('seller_id');
-        $ordersByProduct = $orders->groupBy('product_id');
+        $ordersBySeller = $orders->groupBy('seller.name');
+        $ordersByProduct = $orders->groupBy('product.name');
         $ordersByDate = $orders->groupBy('date');
 
         $payload = [
