@@ -4,6 +4,7 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,10 @@ Route::prefix('products')->group(function () {
     Route::get('/{id}', [ProductController::class, 'show']);
     Route::put('/{id}', [ProductController::class, 'update']);
     Route::delete('/{id}', [ProductController::class, 'delete']);
+});
+Route::prefix('reports')->group(function () {
+    Route::get('/', [ReportController::class, 'index']);
+    Route::get('/{id}', [ReportController::class, 'show']);
+    Route::put('/{id}', [ReportController::class, 'update']);
+    Route::delete('/{id}', [ReportController::class, 'delete']);
 });
