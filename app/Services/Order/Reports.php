@@ -22,7 +22,7 @@ class Reports
     {
         $invoice = 0;
         foreach ($collection as $order) {
-            $invoice += $order->quantitySold;
+            $invoice += $order->quantity;
         }
         return $invoice * self::BROWNIE_PRICE;
     }
