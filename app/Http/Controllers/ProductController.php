@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::with('company')->latest()->paginate(10);
+        return Product::with('company')->latest()->get();
     }
 
     public function show($id)
@@ -30,5 +31,16 @@ class ProductController extends Controller
     public function delete($id)
     {
         return Product::findOrFail($id)->delete();
+    }
+    public function showOrders($product_id)
+    {
+        return Order::where('product_id', $product_id)
+            ->with([
+                'seller' => function ($query) {
+                    return $query->with('company');
+                }, 'product' => function ($query){
+                    return $query->with('company');
+                }])
+                ->get();
     }
 }
