@@ -60,7 +60,4 @@ Route::prefix('products')->group(function () {
 });
 Route::prefix('reports')->group(function () {
     Route::get('/', [ReportController::class, 'index']);
-    Route::get('/{id}', [ReportController::class, 'show']);
-    Route::put('/{id}', [ReportController::class, 'update']);
-    Route::delete('/{id}', [ReportController::class, 'delete']);
 });
