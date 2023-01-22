@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Seller;
+use App\Services\Order\Reports;
 
 class SellerController extends Controller
 {
@@ -54,17 +55,18 @@ class SellerController extends Controller
 
     public function showOrdersFromPeriod($seller_id, $beginDate, $endDate)
     {
+        $orders = Order::where('seller_id', $seller_id)
+            ->whereBetween('date', [$beginDate, $endDate])
+            ->with([
+                'product' => function ($query) {
+                    return $query->with('company');
+                },
+                'seller' => function ($query) {
+                    return $query->with('company');
+            }])
+            ->latest()
+            ->get();
         return
-            Order::where('seller_id', $seller_id)
-                ->whereBetween('date', [$beginDate, $endDate])
-                ->with([
-                    'product' => function ($query) {
-                        return $query->with('company');
-                    },
-                    'seller' => function ($query) {
-                        return $query->with('company');
-                }])
-                ->latest()
-                ->get();
+            ReportController::invoicing($orders, $beginDate, $endDate);
     }
 }
