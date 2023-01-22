@@ -20,6 +20,21 @@ class CompanyController extends Controller
         return Company::findOrFail($id);
     }
 
+    public function store(Request $request)
+    {
+        return Company::create($request->all());
+    }
+
+    public function update(Request $request)
+    {
+        return Company::findOrFail($request->id)->update($request->all());
+    }
+
+    public function delete($id)
+    {
+        return Company::findOrFail($id)->delete();
+    }
+
     public function showSellers($company_id)
     {
         return Seller::where('company_id', $company_id)
@@ -46,28 +61,32 @@ class CompanyController extends Controller
                 ->with([
                     'seller' => function ($query) {
                         return $query->with('company');
-                    }
-                ])
-                ->with([
+                    },
                     'product' => function ($query) {
                         return $query->with('company');
-                }])
+                    }
+                ])
                 ->latest()
                 ->get();
     }
 
-    public function store(Request $request)
+    public function showOrdersFromPeriod($company_id, $beginDate, $endDate)
     {
-        return Company::create($request->all());
-    }
-
-    public function update(Request $request)
-    {
-        return Company::findOrFail($request->id)->update($request->all());
-    }
-
-    public function delete($id)
-    {
-        return Company::findOrFail($id)->delete();
+        $sellers = Seller::select('id')
+            ->where('company_id', $company_id)
+            ->get();
+            $orders = Order::whereIn('seller_id', $sellers)
+                ->whereBetween('date', [$beginDate, $endDate])
+                ->with([
+                    'seller' => function ($query) {
+                        return $query->with('company');
+                    },
+                    'product' => function ($query) {
+                        return $query->with('company');
+                    }
+                ])
+                ->latest()
+                ->get();
+        return ReportController::invoicing($orders);
     }
 }
