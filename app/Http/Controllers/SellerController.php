@@ -67,7 +67,6 @@ class SellerController extends Controller
             }])
             ->latest()
             ->get();
-        return
-            ReportController::invoicing($orders);
+        return ReportController::invoicing($orders);
     }
 }
