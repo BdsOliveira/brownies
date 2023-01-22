@@ -20,32 +20,6 @@ class SellerController extends Controller
         return Seller::with('company')->findOrFail($id);
     }
 
-    public function showOrders($seller_id)
-    {
-        return
-            Order::where('seller_id', $seller_id)
-                ->with([
-                    'product' => function ($query) {
-                        return $query->with('company');
-                }])
-                ->with('seller')
-                ->latest()
-                ->paginate(15);
-    }
-
-    public function showOrdersFromPeriod($seller_id, $beginDate, $endDate)
-    {
-        return
-            Order::where('seller_id', $seller_id)
-                ->with([
-                    'product' => function ($query) {
-                        return $query->with('company');
-                }])
-                ->with('seller')
-                ->latest()
-                ->paginate(15);
-    }
-
     public function store(Request $request)
     {
         return Seller::create($request->all());
@@ -59,5 +33,38 @@ class SellerController extends Controller
     public function delete($id)
     {
         return Seller::findOrFail($id)->delete();
+    }
+
+    public function showOrders($seller_id)
+    {
+        return
+            Order::where('seller_id', $seller_id)
+                ->with([
+                    'product' => function ($query) {
+                        return $query->with('company');
+                    }
+                ])
+                ->with([
+                    'seller' => function ($query) {
+                        return $query->with('company');
+                }])
+                ->latest()
+                ->get();
+    }
+
+    public function showOrdersFromPeriod($seller_id, $beginDate, $endDate)
+    {
+        return
+            Order::where('seller_id', $seller_id)
+                ->whereBetween('date', [$beginDate, $endDate])
+                ->with([
+                    'product' => function ($query) {
+                        return $query->with('company');
+                    },
+                    'seller' => function ($query) {
+                        return $query->with('company');
+                }])
+                ->latest()
+                ->get();
     }
 }
