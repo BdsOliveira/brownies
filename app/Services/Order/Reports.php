@@ -5,25 +5,34 @@ namespace App\Services\Order;
 use App\Models\Order;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Arr;
 
 class Reports
 {
-    const BROWNIE_PRICE = 5;
 
     public function reportFromDays(CarbonInterface $beginDate, CarbonInterface $endDate)
     {
-        return Order::with(['seller'])->whereBetween('date', [$beginDate->format('Y-m-d'), $endDate->format('Y-m-d')])
+        return Order::whereBetween('date', [$beginDate->format('Y-m-d'), $endDate->format('Y-m-d')])
+            ->with([
+                'product' => function ($query) {
+                    return $query->with('company');
+                },
+                'seller' => function ($query) {
+                    return $query->with('company');
+            }])
             ->latest()
             ->get();
     }
 
-    public function faturamento(Collection $collection)
+    public function billing(Collection $collection)
     {
-        $invoice = 0;
+        $payload['amount'] = 0;
+        $payload['comissions'] = 0;
+        $payload['quantity'] = 0;
         foreach ($collection as $order) {
-            $invoice += $order->quantity;
+            $payload['amount'] += ($order->quantity * $order->product->price);
+            $payload['comissions'] += ($order->quantity + $order->product->comission);
+            $payload['quantity'] += $order->quantity;
         }
-        return $invoice * self::BROWNIE_PRICE;
+        return $payload;
     }
 }
