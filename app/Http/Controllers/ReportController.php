@@ -18,7 +18,7 @@ class ReportController extends Controller
         return ReportController::invoicing(Order::get(), now()->subDays(30), now());
     }
 
-    public static function invoicing($orders, $beginDate, $endDate)
+    public static function invoicing($orders)
     {
         $billing = (new Reports)->billing($orders);
 
@@ -32,8 +32,8 @@ class ReportController extends Controller
             'ordersByProduct' => $ordersByProduct,
             'ordersByDate' => $ordersByDate,
             'billing' => $billing,
-            'beginDate' => $beginDate,
-            'endDate' => $endDate,
+            'beginDate' => $orders[0]->date,
+            'endDate' => $orders[count($orders)-1]->date,
         ];
         return $payload;
     }
