@@ -13,7 +13,8 @@ class SellerController extends Controller
     {
         return Seller::with('company')
             ->latest()
-            ->get();
+            ->get()
+            ->groupBy('company.name');
     }
 
     public function show($id)
