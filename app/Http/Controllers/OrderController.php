@@ -38,4 +38,20 @@ class OrderController extends Controller
     {
         return Order::findOrFail($id)->delete();
     }
+
+    public function showFromPeriod($beginDate, $endDate)
+    {
+        $orders = Order::whereBetween('date', [$beginDate, $endDate])
+            ->with([
+            'seller' => function ($query) {
+                return $query->with('company');
+            },
+            'product' => function ($query) {
+                return $query->with('company');
+            }
+            ])
+            ->latest()
+            ->get();
+        return ReportController::invoicing($orders);
+    }
 }
