@@ -43,4 +43,18 @@ class ProductController extends Controller
                 }])
                 ->get();
     }
+
+    public function showOrdersFromPeriod($product_id, $beginDate, $endDate)
+    {
+        $orders = Order::where('product_id', $product_id)
+            ->whereBetween('date', [$beginDate, $endDate])
+            ->with([
+                'seller' => function ($query) {
+                    return $query->with('company');
+                }, 'product' => function ($query){
+                    return $query->with('company');
+                }])
+                ->get();
+        return ReportController::invoicing($orders);
+    }
 }

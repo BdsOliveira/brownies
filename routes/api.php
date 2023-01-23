@@ -58,6 +58,7 @@ Route::prefix('products')->group(function () {
     Route::put('/{id}', [ProductController::class, 'update']);
     Route::delete('/{id}', [ProductController::class, 'delete']);
     Route::get('/{id}/orders', [ProductController::class, 'showOrders']);
+    Route::get('/{id}/orders/{beginDate}/{endDate}', [ProductController::class, 'showOrdersFromPeriod']);
 });
 Route::prefix('reports')->group(function () {
     Route::get('/', [ReportController::class, 'index']);
