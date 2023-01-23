@@ -75,18 +75,18 @@ class CompanyController extends Controller
         $sellers = Seller::select('id')
             ->where('company_id', $company_id)
             ->get();
-            $orders = Order::whereIn('seller_id', $sellers)
-                ->whereBetween('date', [$beginDate, $endDate])
-                ->with([
-                    'seller' => function ($query) {
-                        return $query->with('company');
-                    },
-                    'product' => function ($query) {
-                        return $query->with('company');
-                    }
-                ])
-                ->latest()
-                ->get();
+        $orders = Order::whereIn('seller_id', $sellers)
+            ->whereBetween('date', [$beginDate, $endDate])
+            ->with([
+                'seller' => function ($query) {
+                    return $query->with('company');
+                },
+                'product' => function ($query) {
+                    return $query->with('company');
+                }
+            ])
+            ->latest()
+            ->get();
         return ReportController::invoicing($orders);
     }
 }
