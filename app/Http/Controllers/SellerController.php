@@ -39,8 +39,7 @@ class SellerController extends Controller
 
     public function showOrders($seller_id)
     {
-        return
-            Order::where('seller_id', $seller_id)
+        $orders = Order::where('seller_id', $seller_id)
                 ->with([
                     'product' => function ($query) {
                         return $query->with('company');
@@ -52,6 +51,8 @@ class SellerController extends Controller
                 }])
                 ->latest()
                 ->get();
+        return ReportController::invoicing($orders);
+
     }
 
     public function showOrdersFromPeriod($seller_id, $beginDate, $endDate)
