@@ -30,7 +30,7 @@ class Reports
         $payload['quantity'] = 0;
         foreach ($collection as $order) {
             $payload['amount'] += ($order->quantity * $order->product->price);
-            $payload['comissions'] += ($order->quantity + $order->product->comission);
+            $payload['comissions'] += ($order->quantity * $order->product->comission);
             $payload['quantity'] += $order->quantity;
         }
         return $payload;
