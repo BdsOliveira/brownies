@@ -35,4 +35,20 @@ class Reports
         }
         return $payload;
     }
+    public function billingGroup(Collection $collection)
+    {
+        $payload = [];
+        foreach ($collection as $groups) {
+            $group['amount'] = 0;
+            $group['comissions'] = 0;
+            $group['quantity'] = 0;
+            foreach ($groups as $order) {
+                $group['amount'] += ($order->quantity * $order->product->price);
+                $group['comissions'] += ($order->quantity * $order->product->comission);
+                $group['quantity'] += $order->quantity;
+            }
+            array_push($payload, $group);
+        }
+        return $payload;
+    }
 }

@@ -28,7 +28,7 @@ class ReportController extends Controller
 
         $payload = [
             'orders' => $orders,
-            'ordersBySeller' => $ordersBySeller,
+            'ordersBySeller' => [$ordersBySeller, (new Reports)->billingGroup($ordersBySeller)],
             'ordersByProduct' => $ordersByProduct,
             'ordersByDate' => $ordersByDate,
             'billing' => $billing,
