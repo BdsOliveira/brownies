@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return Product::with('company')->latest()->get();
+        return Product::with('company')->latest()->get()->groupBy('company.name');
     }
 
     public function show($id)
