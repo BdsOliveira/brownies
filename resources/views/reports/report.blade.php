@@ -27,6 +27,55 @@
         </form> <br>
 
         <div class="result-table" id="iReport">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr class="justify-content-center">
+                        <th colspan="2">
+                            RELATÓRIO DO PERÍODO - RESUMIDO
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            Período: {{ $payload['beginDate']->format('d/m/Y') }}
+                            até {{ $payload['endDate']->format('d/m/Y') }}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Vendedor</th>
+                        <th scope="row">Comissão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $totalSells = 0;
+                    $totalComissions = 0; ?>
+                    @forelse ($payload['ordersGroups'] as $result)
+                        <tr>
+                            {{-- {{ dd($result) }} --}}
+                            <td>{{ $result->first() ? $result->first()->seller->nameSeller : '- - -' }}</td>
+
+                            <?php $comission = $result->reduce(function ($acumulado, $item) {
+                                return $acumulado + $item->quantitySold;
+                            }, 0); ?>
+                            <td>R$ {{ $comission }}</td>
+                            <?php
+                            $totalComissions += $comission;
+                            ?>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td>Não há dados para o período selecionado.<br>Tente outra data.
+                            </td>
+                        </tr>
+                    @endforelse
+                    <tr scope="row">
+                        <td colspan="2">Total de Comissões: R$ {{ $totalComissions }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total Vendido: R$ {{ $totalComissions * 5 }}</td>
+                        <td colspan="2">Total de comissão do sistema: R$ {{ $totalComissions * 0.2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>
