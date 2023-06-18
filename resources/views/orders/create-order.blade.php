@@ -17,14 +17,14 @@
                 </select>
             </div>
 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <label for="companySeller">Empresa do vendedor:</label><br>
                 <select class="field form-control" name="companySeller" id="companySeller" required>
                     @foreach ($companies as $company)
                         <option value="{{ $company->companyName }}">{{ $company->companyName }}</option>
                     @endforeach
                 </select><br>
-            </div>
+            </div> --}}
             <div class="col-md-6">
                 <label for="quantitySold">Quantidade vendida:</label><br>
                 <input class="field form-control" type="number" name="quantitySold" id="quantitySold" required><br>
