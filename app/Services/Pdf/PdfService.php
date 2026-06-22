@@ -8,7 +8,7 @@ use DB;
 use Illuminate\Database\Eloquent\Collection;
 use PDF;
 
-class Pdf
+class PdfService
 {
     // public function config($pdf)
     // {
