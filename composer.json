@@ -11,7 +11,7 @@
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-i386": "0.12.x",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/jetstream": "^5.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.7",
@@ -24,7 +24,7 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^11.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
