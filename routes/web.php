@@ -19,7 +19,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ManagementController;
 
-Route::get('/', [ReportController::class, 'viewIindex'])->middleware('auth');
+Route::get('/', [ReportController::class, 'viewIindex'])->name('index')->middleware('auth');
 
 Route::get('/report', [ReportController::class, 'viewReport'])->middleware('auth');
 Route::post('/report', [ReportController::class, 'viewReportFromDate'])->middleware('auth');
@@ -52,7 +52,5 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', fn() => redirect()->route('index'))->name('dashboard');
 });
