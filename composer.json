@@ -11,10 +11,10 @@
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-i386": "0.12.x",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^13.0",
         "laravel/jetstream": "^5.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.7",
+        "laravel/tinker": "^3.0",
         "livewire/livewire": "^3.4",
         "wemersonjanuario/wkhtmltopdf-windows": "0.12.2.3"
     },
@@ -24,7 +24,7 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^12.0",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
